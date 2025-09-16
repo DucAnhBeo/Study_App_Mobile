@@ -2,7 +2,6 @@ const express = require('express');
 const mysql = require('mysql2');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const bcrypt = require('bcryptjs');
 require('dotenv').config();
 
 const app = express();
@@ -103,14 +102,10 @@ app.post('/api/register', (req, res) => {
             });
         }
 
-        // Hash password
-        const saltRounds = 10;
-        const hashedPassword = bcrypt.hashSync(password, saltRounds);
-
-        // Insert new user
+        // Insert new user with plain text password
         db.query(
             'INSERT INTO users (username, password) VALUES (?, ?)',
-            [username, hashedPassword],
+            [username, password], // Store password as plain text
             (err, result) => {
                 if (err) {
                     console.error('Error inserting user:', err);
@@ -162,7 +157,7 @@ app.post('/api/login', (req, res) => {
         const user = results[0];
 
         // Compare password
-        const isPasswordValid = bcrypt.compareSync(password, user.password);
+        const isPasswordValid = password === user.password;
 
         if (!isPasswordValid) {
             return res.status(500).json({

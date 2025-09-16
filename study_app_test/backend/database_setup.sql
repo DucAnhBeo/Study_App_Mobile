@@ -14,13 +14,9 @@ CREATE TABLE IF NOT EXISTS users (
 -- Tạo index cho username để tăng tốc độ tìm kiếm
 CREATE INDEX idx_username ON users(username);
 
--- Xóa dữ liệu cũ và thêm dữ liệu mẫu mới
-DELETE FROM users WHERE username IN ('admin', 'testuser');
-
--- Thêm tài khoản admin với mật khẩu 123456 (đã hash)
-INSERT INTO users (username, password) VALUES
-('admin', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'),
-('testuser', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi');
+-- Thêm tài khoản admin với mật khẩu 123456
+('admin', '123456'),
+('testuser', '123456');
 
 -- Hiển thị cấu trúc bảng và dữ liệu
 DESCRIBE users;
