@@ -1,7 +1,6 @@
 package com.example.study_app;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -30,7 +29,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // Initialize views với ID mới từ Material Design layout
         editTextUsername = findViewById(R.id.editTextUsername);
         editTextPassword = findViewById(R.id.editTextPassword);
         buttonLogin = findViewById(R.id.buttonLogin);
@@ -62,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginUser(String username, String password) {
-        // Hiển thị loading
+
         progressBar.setVisibility(View.VISIBLE);
         buttonLogin.setEnabled(false);
 
@@ -78,13 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     AuthResponse authResponse = response.body();
                     if (authResponse.isSuccess()) {
-                        // Đăng nhập thành công - Lưu thông tin user vào SharedPreferences
-                        SharedPreferences prefs = getSharedPreferences("user_session", MODE_PRIVATE);
-                        SharedPreferences.Editor editor = prefs.edit();
-                        editor.putInt("user_id", authResponse.getUser().getId());
-                        editor.putString("username", authResponse.getUser().getUsername());
-                        editor.apply();
-
+                        // Đăng nhập thành công
                         Toast.makeText(LoginActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
                         // Chuyển sang MainActivity

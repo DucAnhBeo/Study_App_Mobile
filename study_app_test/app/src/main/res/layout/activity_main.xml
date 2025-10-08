@@ -54,8 +54,8 @@
 
         <ImageButton
             android:id="@+id/buttonSettings"
-            android:layout_width="44dp"
-            android:layout_height="42dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:background="@android:color/transparent"
             android:contentDescription="@string/settings"
             android:src="@drawable/ic_settings" />
@@ -83,7 +83,7 @@
                 android:id="@+id/textViewSystemTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/system_title"
+                android:text="Hệ thống học tập"
                 android:textSize="28sp"
                 android:textStyle="bold"
                 android:textColor="#2196F3"
@@ -121,9 +121,9 @@
                     style="@style/CustomButtonStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
                     android:layout_weight="1"
-                    android:text="@string/grade_7"
-                    android:layout_margin="4dp" />
+                    android:text="@string/grade_7" />
 
             </LinearLayout>
 
@@ -147,9 +147,9 @@
                     style="@style/CustomButtonStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
                     android:layout_weight="1"
-                    android:text="@string/grade_9"
-                    android:layout_margin="4dp" />
+                    android:text="@string/grade_9" />
 
             </LinearLayout>
 
@@ -157,7 +157,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/choose_textbook"
+                android:text="Chọn sách giáo khoa"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:layout_marginTop="32dp"
@@ -174,7 +174,7 @@
                     android:id="@+id/buttonCanhDieu"
                     style="@style/CustomButtonStyle"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="55dp"
                     android:layout_weight="1"
                     android:text="@string/canh_dieu"
                     android:layout_margin="4dp" />
@@ -199,52 +199,42 @@
 
             </LinearLayout>
 
-            <!-- Selected Book Display (initially hidden) -->
             <LinearLayout
                 android:id="@+id/selectedBookLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
                 android:layout_marginTop="32dp"
+                android:gravity="center"
+                android:orientation="vertical"
                 android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/selected_book"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
                     android:layout_marginBottom="16dp"
-                    android:textColor="#333333" />
+                    android:text="@string/selected_book"
+                    android:textColor="#333333"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/imageViewBook"
                     android:layout_width="120dp"
                     android:layout_height="160dp"
-                    android:src="@drawable/book_image"
+                    android:layout_marginBottom="16dp"
                     android:contentDescription="@string/selected_book"
-                    android:layout_marginBottom="16dp" />
+                    android:src="@drawable/book_image" />
 
                 <TextView
                     android:id="@+id/textViewSelectedInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=""
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="#2196F3"
+                    android:layout_marginBottom="24dp"
                     android:gravity="center"
-                    android:layout_marginBottom="24dp" />
-
-                <Button
-                    android:id="@+id/buttonEnterClassroom"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/enter_classroom"
-                    android:backgroundTint="#2196F3"
-                    android:textColor="@android:color/white"
-                    android:paddingHorizontal="32dp" />
+                    android:text=""
+                    android:textColor="#2196F3"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 

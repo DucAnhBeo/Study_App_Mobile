@@ -1,0 +1,55 @@
+{
+  "pdf_url": "https://raw.githubusercontent.com/danghaido/Dang/main/CD/CD7.pdf",
+  "chapters": [
+    {
+      "title": "CHƯƠNG I – CHẤT VÀ SỰ BIẾN ĐỔI CỦA CHẤT",
+      "lessons": [
+        { "title": "Bài 1. Nguyên tử", "page": 10 },
+        { "title": "Bài 2. Nguyên tố hoá học", "page": 15 },
+        { "title": "Bài 3. Sơ lược về bảng tuần hoàn các nguyên tố hoá học", "page": 19 },
+        { "title": "Bài 4. Phân tử, đơn chất, hợp chất", "page": 28 },
+        { "title": "Bài 5. Giới thiệu về liên kết hoá học", "page": 33 },
+        { "title": "Bài 6. Hoá trị, công thức hoá học", "page": 39 }
+      ]
+    },
+    {
+      "title": "CHƯƠNG II – NĂNG LƯỢNG VÀ SỰ BIẾN ĐỔI",
+      "lessons": [
+        { "title": "Bài 7. Tốc độ của chuyển động", "page": 47 },
+        { "title": "Bài 8. Đồ thị quãng đường – thời gian", "page": 50 },
+        { "title": "Bài 9. Sự truyền âm", "page": 54 },
+        { "title": "Bài 10. Biên độ, tần số, độ to và độ cao của âm", "page": 58 },
+        { "title": "Bài 11. Phản xạ âm", "page": 62 },
+        { "title": "Bài 12. Ánh sáng, tia sáng", "page": 65 },
+        { "title": "Bài 13. Sự phản xạ ánh sáng", "page": 69 },
+        { "title": "Bài 14. Nam châm", "page": 76 },
+        { "title": "Bài 15. Từ trường", "page": 79 },
+        { "title": "Bài 16. Từ trường Trái Đất", "page": 83 }
+      ]
+    },
+    {
+      "title": "CHƯƠNG III – VẬT SỐNG",
+      "lessons": [
+        { "title": "Bài 17. Vai trò của trao đổi chất và chuyển hoá năng lượng ở sinh vật", "page": 87 },
+        { "title": "Bài 18. Quang hợp ở thực vật", "page": 90 },
+        { "title": "Bài 19. Các yếu tố ảnh hưởng đến quang hợp", "page": 93 },
+        { "title": "Bài 20. Thực hành về quang hợp ở cây xanh", "page": 98 },
+        { "title": "Bài 21. Hô hấp tế bào", "page": 101 },
+        { "title": "Bài 22. Các yếu tố ảnh hưởng đến hô hấp tế bào", "page": 104 },
+        { "title": "Bài 23. Trao đổi khí ở sinh vật", "page": 107 },
+        { "title": "Bài 24. Vai trò của nước và các chất dinh dưỡng đối với cơ thể sinh vật", "page": 112 },
+        { "title": "Bài 25. Trao đổi nước và các chất dinh dưỡng ở thực vật", "page": 115 },
+        { "title": "Bài 26. Trao đổi nước và các chất dinh dưỡng ở động vật", "page": 122 },
+        { "title": "Bài 27. Khái quát về cảm ứng và cảm ứng ở thực vật", "page": 129 },
+        { "title": "Bài 28. Tập tính ở động vật", "page": 133 },
+        { "title": "Bài 29. Khái quát về sinh trưởng và phát triển ở sinh vật", "page": 140 },
+        { "title": "Bài 30. Sinh trưởng và phát triển ở thực vật", "page": 144 },
+        { "title": "Bài 31. Sinh trưởng và phát triển ở động vật", "page": 146 },
+        { "title": "Bài 32. Khái quát về sinh sản và sinh sản vô tính ở sinh vật", "page": 147 },
+        { "title": "Bài 33. Sinh sản hữu tính ở sinh vật", "page": 151 },
+        { "title": "Bài 34. Các yếu tố ảnh hưởng đến sinh sản và điều khiển sinh sản ở sinh vật", "page": 156 },
+        { "title": "Bài 35. Sự thống nhất về cấu trúc và các hoạt động sống trong cơ thể sinh vật", "page": 161 }
+      ]
+    }
+  ]
+}

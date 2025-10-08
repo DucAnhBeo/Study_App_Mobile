@@ -1,12 +1,15 @@
 package com.example.study_app;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResult;
@@ -18,14 +21,23 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.nio.charset.StandardCharsets;
+import java.util.stream.Collectors;
+
+
 public class MainActivity extends AppCompatActivity {
     private String selectedGrade = "";
     private String selectedTextbook = "";
     private LinearLayout selectedBookLayout;
     private TextView textViewSelectedInfo;
     private Button buttonEnterClassroom;
-
-    // Keep track of selected buttons for visual feedback
     private Button currentGradeButton = null;
     private Button currentTextbookButton = null;
 
@@ -35,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
     private String fullName;
     private TextView textViewUsername;
     private ActivityResultLauncher<Intent> editProfileLauncher;
+    private ImageView imageViewBook;
+    private String selectedTitle = null;
+    private String selectedJsonAssetPath = null;
+    private String selectedPdfUrl = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         super.setContentView(R.layout.activity_main);
 
-        // Initialize Activity Result Launcher
         editProfileLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -74,7 +89,8 @@ public class MainActivity extends AppCompatActivity {
         // Initialize views
         selectedBookLayout = findViewById(R.id.selectedBookLayout);
         textViewSelectedInfo = findViewById(R.id.textViewSelectedInfo);
-        buttonEnterClassroom = findViewById(R.id.buttonEnterClassroom);
+        imageViewBook = findViewById(R.id.imageViewBook);
+
 
         // Header: set username and role
         textViewUsername = findViewById(R.id.textViewUsername);
@@ -87,6 +103,8 @@ public class MainActivity extends AppCompatActivity {
             textViewUsername.setText("admin");
         }
         textViewRole.setText("Học sinh");
+
+        imageViewBook.setOnClickListener(v -> OpenReaderIfReady());
 
         // Settings button
         ImageButton buttonSettings = findViewById(R.id.buttonSettings);
@@ -132,16 +150,6 @@ public class MainActivity extends AppCompatActivity {
         buttonChanTroi.setOnClickListener(v -> selectTextbook("Chân trời sáng tạo"));
         buttonKetNoi.setOnClickListener(v -> selectTextbook("Kết nối tri thức"));
 
-        // Enter classroom button
-        buttonEnterClassroom.setOnClickListener(v -> {
-            // TODO: Phát triển chức năng Classroom trong tương lai
-            // Chức năng này sẽ bao gồm:
-            // - Quản lý bài học (Lessons) theo môn học và lớp
-            // - Video bài giảng và tài liệu
-            // - Theo dõi tiến độ học tập
-            android.widget.Toast.makeText(MainActivity.this, "Chức năng Classroom đang được phát triển", android.widget.Toast.LENGTH_SHORT).show();
-        });
-
         // Footer navigation buttons
         LinearLayout buttonHome = findViewById(R.id.buttonHome);
         LinearLayout buttonClassroom = findViewById(R.id.buttonClassroom);
@@ -154,11 +162,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         buttonClassroom.setOnClickListener(v -> {
-            // TODO: Phát triển chức năng Classroom trong tương lai
-            // Chức năng này sẽ bao gồm:
-            // - Quản lý bài học (Lessons) theo môn học và lớp
-            // - Video bài giảng và tài liệu
-            // - Theo dõi tiến độ học tập
             android.widget.Toast.makeText(MainActivity.this, "Chức năng Classroom đang được phát triển", android.widget.Toast.LENGTH_SHORT).show();
         });
 
@@ -168,24 +171,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
         buttonQuiz.setOnClickListener(v -> {
-            // TODO: Phát triển chức năng Quiz trong tương lai
-            // Chức năng này sẽ bao gồm:
-            // - Tạo và quản lý câu hỏi trắc nghiệm
-            // - Hệ thống làm bài và chấm điểm tự động
-            // - Theo dõi kết quả và thống kê điểm số
-            // - Phân loại câu hỏi theo độ khó và chủ đề
             android.widget.Toast.makeText(MainActivity.this, "Chức năng Quiz đang được phát triển", android.widget.Toast.LENGTH_SHORT).show();
         });
 
         buttonChatbot.setOnClickListener(v -> {
-            // TODO: Phát triển chức năng Chatbot trong tương lai
-            // Chức năng này sẽ bao gồm:
-            // - AI Assistant hỗ trợ học tập
-            // - Trả lời câu hỏi về bài học
-            // - Gợi ý và hướng dẫn học tập
-            android.widget.Toast.makeText(MainActivity.this, "Chức năng Chatbot đang được phát triển", android.widget.Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, ChatActivity.class);
+            startActivity(intent);
         });
 
+        // Điều chỉnh layout để ko bị chồng
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -206,7 +200,6 @@ public class MainActivity extends AppCompatActivity {
             clickedButton.setTextColor(getColor(android.R.color.white));
             currentGradeButton = clickedButton;
         }
-
         updateBookDisplay();
     }
 
@@ -227,13 +220,83 @@ public class MainActivity extends AppCompatActivity {
         updateBookDisplay();
     }
 
+    private void OpenReaderIfReady() {
+        Intent i = new Intent(MainActivity.this, ReaderActivity.class);
+        i.putExtra("title", selectedTitle);
+        i.putExtra("pdf_url", selectedPdfUrl);
+        i.putExtra("jsonAssetPath", selectedJsonAssetPath);
+        startActivity(i);
+    }
+
     private void updateBookDisplay() {
-        // Only show book when BOTH grade and textbook are selected
         if (!selectedGrade.isEmpty() && !selectedTextbook.isEmpty()) {
             selectedBookLayout.setVisibility(View.VISIBLE);
             textViewSelectedInfo.setText(selectedGrade + "\n" + selectedTextbook);
+
+            loadCoverImage(selectedGrade, selectedTextbook);
+
+            imageViewBook.setContentDescription(selectedGrade + " - " + selectedTextbook);
+            selectedTitle = selectedGrade + " - " + selectedTextbook;
+            selectedJsonAssetPath = buildTocAssetPath(selectedGrade, selectedTextbook);
+
+            String rawPdf = loadPdfUrlFromJson(selectedJsonAssetPath);
+            selectedPdfUrl = rawPdf;
+
         } else {
             selectedBookLayout.setVisibility(View.GONE);
+            selectedTitle = null;
+            selectedJsonAssetPath = null;
+            selectedPdfUrl = null;
+        }
+    }
+
+    private void loadCoverImage(String grade, String textbook) {
+        String coverAssetPath = buildCoverAssetPath(grade, textbook);
+        try (InputStream is = getAssets().open(coverAssetPath)) {
+            Bitmap bmp = BitmapFactory.decodeStream(is);
+            if (bmp != null) {
+                imageViewBook.setImageBitmap(bmp);
+            } else {
+                imageViewBook.setImageResource(R.drawable.book_image);
+            }
+        } catch (IOException e) {
+            imageViewBook.setImageResource(R.drawable.book_image);
+        }
+    }
+
+    private String mapSeriesCode(String textbook) {
+        switch (textbook) {
+            case "Cánh diều": return "CD";
+            case "Chân trời sáng tạo": return "CTST";
+            case "Kết nối tri thức": return "KNTT";
+            default: return textbook;
+        }
+    }
+    private String extractGradeNumber(String grade) {
+        return grade.replace("Lớp", "").trim();
+    }
+
+    private String buildCoverAssetPath(String grade, String textbook) {
+        String series = mapSeriesCode(textbook);
+        String g = extractGradeNumber(grade);
+        String fileName = series + g + ".png";
+        return "cover_sgk/" + series + "/" + fileName;
+    }
+
+    private String buildTocAssetPath(String grade, String textbook) {
+        String series = mapSeriesCode(textbook);
+        String g = extractGradeNumber(grade);
+        String fileName = series + g + ".json";
+        return "table_of_content/" + series + "/" + fileName;
+    }
+
+    private String loadPdfUrlFromJson(String assetPath) {
+        try (InputStream is = getAssets().open(assetPath)) {
+            Reader reader = new InputStreamReader(is, StandardCharsets.UTF_8);
+            String json = new BufferedReader(reader).lines().collect(Collectors.joining());
+            return new JSONObject(json).getString("pdf_url");
+        } catch (Exception e) {
+            return null;
         }
     }
 

@@ -45,7 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String password = editTextPassword.getText().toString().trim();
                 String confirmPassword = editTextConfirmPassword.getText().toString().trim();
 
-                // Validation chi tiết
+
                 if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
                     Toast.makeText(RegisterActivity.this, "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
                     return;
@@ -82,7 +82,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void registerUser(String username, String password) {
-        // Hiển thị loading
+
         progressBar.setVisibility(View.VISIBLE);
         buttonRegister.setEnabled(false);
 
