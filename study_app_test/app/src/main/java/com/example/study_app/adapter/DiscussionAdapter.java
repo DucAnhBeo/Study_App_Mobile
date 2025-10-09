@@ -68,6 +68,10 @@ public class DiscussionAdapter extends RecyclerView.Adapter<DiscussionAdapter.Di
             if (context instanceof DiscussionActivity) {
                 DiscussionActivity activity = (DiscussionActivity) context;
                 String currentUsername = activity.getCurrentUsername();
+
+                // Add debug log
+                android.util.Log.d("DiscussionAdapter", "Current user: " + currentUsername + ", Question author: " + discussion.getAuthor());
+
                 if (currentUsername != null && currentUsername.equals(discussion.getAuthor())) {
                     holder.deleteButton.setVisibility(View.VISIBLE);
                     holder.deleteButton.setOnClickListener(v -> showDeleteConfirmDialog(discussion.getId()));

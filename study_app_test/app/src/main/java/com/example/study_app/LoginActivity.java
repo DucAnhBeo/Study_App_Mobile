@@ -79,9 +79,13 @@ public class LoginActivity extends AppCompatActivity {
                         // Đăng nhập thành công
                         Toast.makeText(LoginActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
-                        // Chuyển sang MainActivity
+                        // Chuyển sang MainActivity với đầy đủ thông tin user
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        intent.putExtra("username", authResponse.getUser().getUsername());
+                        if (authResponse.getUser() != null) {
+                            intent.putExtra("userId", authResponse.getUser().getId());
+                            intent.putExtra("username", authResponse.getUser().getUsername());
+                            intent.putExtra("fullName", authResponse.getUser().getFullName());
+                        }
                         startActivity(intent);
                         finish();
                     } else {

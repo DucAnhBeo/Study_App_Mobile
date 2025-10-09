@@ -1,4 +1,3 @@
-
 const express = require('express');
 const mysql = require('mysql2');
 const bodyParser = require('body-parser');
@@ -184,7 +183,8 @@ app.post('/api/login', (req, res) => {
                 message: 'Đăng nhập thành công',
                 user: {
                     id: user.id,
-                    username: user.username
+                    username: user.username,
+                    fullName: user.fullName || null
                 }
             });
         } else {
@@ -413,9 +413,9 @@ app.post('/api/discussion/answers', (req, res) => {
 // Delete a question (only by author)
 app.delete('/api/discussion/questions/:questionId', (req, res) => {
     const questionId = req.params.questionId;
-    const { user_id } = req.body;
+    const userId = req.query.user_id; // Changed from userId to user_id to match database column
 
-    if (!user_id) {
+    if (!userId) {
         return res.status(400).json({
             success: false,
             message: 'User ID là bắt buộc'
@@ -440,7 +440,7 @@ app.delete('/api/discussion/questions/:questionId', (req, res) => {
             });
         }
 
-        if (results[0].user_id !== parseInt(user_id)) {
+        if (results[0].user_id !== parseInt(userId)) {
             return res.status(403).json({
                 success: false,
                 message: 'Bạn chỉ có thể xóa câu hỏi của chính mình'

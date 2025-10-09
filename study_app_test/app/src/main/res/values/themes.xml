@@ -1,8 +1,35 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Study_App" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Primary/Secondary -->
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorOnPrimary">@color/text_white</item>
+        <item name="colorSecondary">@color/accent_color</item>
+        <item name="colorOnSecondary">@color/text_white</item>
+        <item name="colorTertiary">@color/info_color</item>
+        <item name="colorOnTertiary">@color/text_white</item>
+
+        <!-- Surfaces -->
+        <item name="colorSurface">@color/surface_color</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="colorSurfaceVariant">@color/background_light</item>
+        <item name="colorOnSurfaceVariant">@color/text_secondary</item>
+
+        <!-- Status colors -->
+        <item name="colorError">@color/error_color</item>
+        <item name="colorOnError">@color/text_white</item>
+
+        <!-- Legacy/AppCompat fallbacks -->
+        <item name="colorAccent">@color/primary_color</item>
+        <item name="android:statusBarColor">@color/primary_dark</item>
+        <item name="android:navigationBarColor">@color/surface_color</item>
+        <item name="android:windowBackground">@color/background_light</item>
+
+        <!-- Control colors -->
+        <item name="colorControlActivated">@color/primary_color</item>
+        <item name="colorControlHighlight">@color/primary_color</item>
+        <item name="colorControlNormal">@color/text_secondary</item>
+        <item name="android:colorAccent">@color/primary_color</item>
     </style>
 
     <style name="Theme.Study_App" parent="Base.Theme.Study_App" />

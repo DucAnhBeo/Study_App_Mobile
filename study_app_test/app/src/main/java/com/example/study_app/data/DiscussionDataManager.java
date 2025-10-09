@@ -110,8 +110,8 @@ public class DiscussionDataManager {
 
     // Xóa câu hỏi
     public static void deleteQuestion(int questionId, int userId, ActionCallback callback) {
-        QuestionRequest request = new QuestionRequest(userId, ""); // Chỉ cần userId để xác thực
-        Call<AuthResponse> call = apiService.deleteQuestion(questionId, request);
+        // Use the new API signature with @Query parameter
+        Call<AuthResponse> call = apiService.deleteQuestion(questionId, userId);
 
         call.enqueue(new Callback<AuthResponse>() {
             @Override

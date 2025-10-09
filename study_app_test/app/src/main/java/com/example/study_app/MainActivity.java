@@ -2,6 +2,7 @@ package com.example.study_app;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -35,7 +37,7 @@ import java.util.stream.Collectors;
 public class MainActivity extends AppCompatActivity {
     private String selectedGrade = "";
     private String selectedTextbook = "";
-    private LinearLayout selectedBookLayout;
+    private CardView selectedBookLayout;
     private TextView textViewSelectedInfo;
     private Button buttonEnterClassroom;
     private Button currentGradeButton = null;
@@ -58,33 +60,35 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         super.setContentView(R.layout.activity_main);
 
+
         editProfileLauncher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-                        Intent data = result.getData();
-                        String updatedUsername = data.getStringExtra("updatedUsername");
-                        String updatedFullName = data.getStringExtra("updatedFullName");
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                            Intent data = result.getData();
+                            String updatedUsername = data.getStringExtra("updatedUsername");
+                            String updatedFullName = data.getStringExtra("updatedFullName");
 
-                        if (updatedUsername != null) {
-                            username = updatedUsername;
-                            textViewUsername.setText(username);
-                        }
+                            if (updatedUsername != null) {
+                                username = updatedUsername;
+                                textViewUsername.setText(username);
+                            }
 
-                        if (updatedFullName != null) {
-                            fullName = updatedFullName;
+                            if (updatedFullName != null) {
+                                fullName = updatedFullName;
+                            }
                         }
                     }
                 }
-            }
         );
 
         // Get user data from intent
         userId = getIntent().getIntExtra("userId", -1);
         username = getIntent().getStringExtra("username");
         fullName = getIntent().getStringExtra("fullName");
+
 
         // Initialize views
         selectedBookLayout = findViewById(R.id.selectedBookLayout);
@@ -110,24 +114,24 @@ public class MainActivity extends AppCompatActivity {
         ImageButton buttonSettings = findViewById(R.id.buttonSettings);
         buttonSettings.setOnClickListener(v -> {
             new android.app.AlertDialog.Builder(MainActivity.this)
-                .setTitle("Tùy chọn")
-                .setItems(new String[]{"Chỉnh sửa thông tin", "Đăng xuất"}, (dialog, which) -> {
-                    if (which == 0) {
-                        // Edit Profile
-                        Intent intent = new Intent(MainActivity.this, EditProfileActivity.class);
-                        intent.putExtra("userId", userId);
-                        intent.putExtra("username", username);
-                        intent.putExtra("fullName", fullName);
-                        editProfileLauncher.launch(intent);
-                    } else if (which == 1) {
-                        // Logout
-                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent);
-                        finish();
-                    }
-                })
-                .show();
+                    .setTitle("Tùy chọn")
+                    .setItems(new String[]{"Chỉnh sửa thông tin", "Đăng xuất"}, (dialog, which) -> {
+                        if (which == 0) {
+                            // Edit Profile
+                            Intent intent = new Intent(MainActivity.this, EditProfileActivity.class);
+                            intent.putExtra("userId", userId);
+                            intent.putExtra("username", username);
+                            intent.putExtra("fullName", fullName);
+                            editProfileLauncher.launch(intent);
+                        } else if (which == 1) {
+                            // Logout
+                            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                            finish();
+                        }
+                    })
+                    .show();
         });
 
         // Grade selection buttons
@@ -167,6 +171,8 @@ public class MainActivity extends AppCompatActivity {
 
         buttonDiscussion.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, DiscussionActivity.class);
+            intent.putExtra("userId", userId);
+            intent.putExtra("username", username);
             startActivity(intent);
         });
 
@@ -213,7 +219,9 @@ public class MainActivity extends AppCompatActivity {
         Button clickedButton = getCurrentTextbookButton(textbook);
         if (clickedButton != null) {
             clickedButton.setSelected(true);
-            clickedButton.setTextColor(getColor(android.R.color.white));
+            // Thay đổi màu nền thành primary và chữ thành trắng để tương phản
+            clickedButton.setBackgroundTintList(getColorStateList(R.color.primary_color));
+            clickedButton.setTextColor(getColor(R.color.text_white));
             currentTextbookButton = clickedButton;
         }
 
@@ -349,11 +357,17 @@ public class MainActivity extends AppCompatActivity {
         Button buttonChanTroi = findViewById(R.id.buttonChanTroi);
         Button buttonKetNoi = findViewById(R.id.buttonKetNoi);
 
+        // Reset về trạng thái ban đầu với màu primary và nền trong suốt
         buttonCanhDieu.setSelected(false);
-        buttonCanhDieu.setTextColor(getColor(android.R.color.black));
+        buttonCanhDieu.setTextColor(getColor(R.color.primary_color));
+        buttonCanhDieu.setBackgroundTintList(getColorStateList(android.R.color.transparent));
+
         buttonChanTroi.setSelected(false);
-        buttonChanTroi.setTextColor(getColor(android.R.color.black));
+        buttonChanTroi.setTextColor(getColor(R.color.primary_color));
+        buttonChanTroi.setBackgroundTintList(getColorStateList(android.R.color.transparent));
+
         buttonKetNoi.setSelected(false);
-        buttonKetNoi.setTextColor(getColor(android.R.color.black));
+        buttonKetNoi.setTextColor(getColor(R.color.primary_color));
+        buttonKetNoi.setBackgroundTintList(getColorStateList(android.R.color.transparent));
     }
 }

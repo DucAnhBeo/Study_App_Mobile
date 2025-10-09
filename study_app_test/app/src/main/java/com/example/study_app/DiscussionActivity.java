@@ -1,6 +1,6 @@
 package com.example.study_app;
 
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
@@ -29,7 +30,7 @@ public class DiscussionActivity extends AppCompatActivity {
     private List<Discussion> filteredDiscussions;
     private EditText editTextSearch;
     private ImageButton buttonClearSearch;
-    private TextView textViewNoResults;
+    private LinearLayout textViewNoResults; // Fixed: Changed from TextView to LinearLayout
     private SwipeRefreshLayout swipeRefreshLayout;
 
     private int currentUserId;
@@ -40,10 +41,12 @@ public class DiscussionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_discussion);
 
-        // Lấy thông tin user từ SharedPreferences
-        SharedPreferences prefs = getSharedPreferences("user_session", MODE_PRIVATE);
-        currentUserId = prefs.getInt("user_id", -1);
-        currentUsername = prefs.getString("username", "");
+        // Lấy thông tin user từ Intent
+        currentUserId = getIntent().getIntExtra("userId", -1);
+        currentUsername = getIntent().getStringExtra("username");
+
+        // Add debug log
+        android.util.Log.d("DiscussionActivity", "Loaded session - UserId: " + currentUserId + ", Username: " + currentUsername);
 
         if (currentUserId == -1) {
             Toast.makeText(this, "Phiên đăng nhập đã hết hạn", Toast.LENGTH_SHORT).show();
@@ -141,7 +144,7 @@ public class DiscussionActivity extends AppCompatActivity {
             String lowerQuery = query.toLowerCase().trim();
             for (Discussion discussion : discussions) {
                 if (discussion.getQuestion().toLowerCase().contains(lowerQuery) ||
-                    discussion.getAuthor().toLowerCase().contains(lowerQuery)) {
+                        discussion.getAuthor().toLowerCase().contains(lowerQuery)) {
                     filteredDiscussions.add(discussion);
                 }
             }
@@ -151,7 +154,9 @@ public class DiscussionActivity extends AppCompatActivity {
         if (filteredDiscussions.isEmpty() && !query.trim().isEmpty()) {
             recyclerView.setVisibility(View.GONE);
             textViewNoResults.setVisibility(View.VISIBLE);
-            textViewNoResults.setText("Không tìm thấy kết quả cho: " + query);
+
+            TextView messageTextView = (TextView) textViewNoResults.getChildAt(1); // Second child is the message TextView
+            messageTextView.setText("Không tìm thấy kết quả cho: " + query);
         } else {
             recyclerView.setVisibility(View.VISIBLE);
             textViewNoResults.setVisibility(View.GONE);

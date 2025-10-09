@@ -1,77 +1,57 @@
-package com.example.study_app.model;
+package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Question {
-    private String id;
-    private String questionText;
-    private List<String> options;
-    private int correctAnswerIndex;
-    private String explanation;
 
-    public Question() {
-        // Constructor mặc định cần thiết cho serialization
+    private String question;
+    private String correctAnswer;
+    private ArrayList<String> incorrectAnswers;
+
+    private List<String> allOptions;
+    private int selectedAnswerIndex = -1;
+    private int correctOptionIndex = -1;
+
+    public Question(String question, String correctAnswer, ArrayList<String> incorrectAnswers) {
+        this.question = question;
+        this.correctAnswer = correctAnswer;
+        this.incorrectAnswers = incorrectAnswers;
     }
 
-    public Question(String id, String questionText, List<String> options, int correctAnswerIndex, String explanation) {
-        this.id = id;
-        this.questionText = questionText;
-        this.options = options;
-        this.correctAnswerIndex = correctAnswerIndex;
-        this.explanation = explanation;
+    public String getQuestion() {
+        return question;
     }
 
-    // Getters
-    public String getId() {
-        return id;
-    }
-
-    public String getQuestionText() {
-        return questionText;
-    }
-
-    public List<String> getOptions() {
-        return options;
-    }
-
-    public int getCorrectAnswerIndex() {
-        return correctAnswerIndex;
-    }
-
-    public String getExplanation() {
-        return explanation;
-    }
-
-    // Setters
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setQuestionText(String questionText) {
-        this.questionText = questionText;
-    }
-
-    public void setOptions(List<String> options) {
-        this.options = options;
-    }
-
-    public void setCorrectAnswerIndex(int correctAnswerIndex) {
-        this.correctAnswerIndex = correctAnswerIndex;
-    }
-
-    public void setExplanation(String explanation) {
-        this.explanation = explanation;
-    }
-
-    // Method tiện ích
     public String getCorrectAnswer() {
-        if (options != null && correctAnswerIndex >= 0 && correctAnswerIndex < options.size()) {
-            return options.get(correctAnswerIndex);
-        }
-        return null;
+        return correctAnswer;
     }
 
-    public boolean isCorrectAnswer(int selectedIndex) {
-        return selectedIndex == correctAnswerIndex;
+    public ArrayList<String> getIncorrectAnswers() {
+        return incorrectAnswers;
+    }
+
+    public List<String> getAllOptions() {
+        return allOptions;
+    }
+
+    public void setAllOptions(List<String> allOptions) {
+        this.allOptions = allOptions;
+    }
+
+    public int getCorrectOptionIndex() {
+        return correctOptionIndex;
+    }
+
+    public void setCorrectOptionIndex(int correctOptionIndex) {
+        this.correctOptionIndex = correctOptionIndex;
+    }
+
+    public int getSelectedAnswerIndex() {
+        return selectedAnswerIndex;
+    }
+
+    public void setSelectedAnswerIndex(int selectedAnswerIndex) {
+        this.selectedAnswerIndex = selectedAnswerIndex;
     }
 }

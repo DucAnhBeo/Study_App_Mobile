@@ -14,6 +14,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface AuthAPI {
     // Auth endpoints
@@ -37,5 +38,5 @@ public interface AuthAPI {
     Call<AuthResponse> createAnswer(@Body AnswerRequest request);
 
     @DELETE("api/discussion/questions/{questionId}")
-    Call<AuthResponse> deleteQuestion(@Path("questionId") int questionId, @Body QuestionRequest userIdRequest);
+    Call<AuthResponse> deleteQuestion(@Path("questionId") int questionId, @Query("user_id") int userId);
 }
