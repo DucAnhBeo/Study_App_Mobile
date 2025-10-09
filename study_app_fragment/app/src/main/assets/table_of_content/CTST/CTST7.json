@@ -1,0 +1,104 @@
+{
+  "pdf_url": "https://raw.githubusercontent.com/danghaido/Dang/main/CTST/CTST7.pdf",
+  "chapters": [
+    {
+      "title": "MỞ ĐẦU",
+      "lessons": [
+        { "title": "Bài 1. Phương pháp và kĩ năng học tập môn Khoa học tự nhiên", "page": 6 }
+      ]
+    },
+    {
+      "title": "CHỦ ĐỀ 1 – NGUYÊN TỬ – NGUYÊN TỐ HOÁ HỌC – SƠ LƯỢC VỀ BẢNG TUẦN HOÀN CÁC NGUYÊN TỐ HOÁ HỌC",
+      "lessons": [
+        { "title": "Bài 2. Nguyên tử", "page": 14 },
+        { "title": "Bài 3. Nguyên tố hoá học", "page": 18 },
+        { "title": "Bài 4. Sơ lược bảng tuần hoàn các nguyên tố hoá học", "page": 22 }
+      ]
+    },
+    {
+      "title": "CHỦ ĐỀ 2 – PHÂN TỬ",
+      "lessons": [
+        { "title": "Bài 5. Phân tử – Đơn chất – Hợp chất", "page": 31 },
+        { "title": "Bài 6. Giới thiệu về liên kết hoá học", "page": 37 },
+        { "title": "Bài 7. Hoá trị và công thức hoá học", "page": 45 }
+      ]
+    },
+    {
+      "title": "CHỦ ĐỀ 3 – TỐC ĐỘ",
+      "lessons": [
+        { "title": "Bài 8. Tốc độ chuyển động", "page": 52 },
+        { "title": "Bài 9. Đồ thị quãng đường – thời gian", "page": 55 },
+        { "title": "Bài 10. Đo tốc độ", "page": 59 },
+        { "title": "Bài 11. Tốc độ và an toàn giao thông", "page": 62 }
+      ]
+    },
+    {
+      "title": "CHỦ ĐỀ 4 – ÂM THANH",
+      "lessons": [
+        { "title": "Bài 12. Mô tả sóng âm", "page": 65 },
+        { "title": "Bài 13. Độ to và độ cao của âm", "page": 70 },
+        { "title": "Bài 14. Phản xạ âm", "page": 74 }
+      ]
+    },
+    {
+      "title": "CHỦ ĐỀ 5 – ÁNH SÁNG",
+      "lessons": [
+        { "title": "Bài 15. Ánh sáng, tia sáng", "page": 78 },
+        { "title": "Bài 16. Sự phản xạ ánh sáng", "page": 82 },
+        { "title": "Bài 17. Ảnh của vật tạo bởi gương phẳng", "page": 86 }
+      ]
+    },
+    {
+      "title": "CHỦ ĐỀ 6 – TỪ",
+      "lessons": [
+        { "title": "Bài 18. Nam châm", "page": 90 },
+        { "title": "Bài 19. Từ trường", "page": 94 },
+        { "title": "Bài 20. Từ trường Trái Đất – Sử dụng la bàn", "page": 98 },
+        { "title": "Bài 21. Nam châm điện", "page": 102 }
+      ]
+    },
+    {
+      "title": "CHỦ ĐỀ 7 – TRAO ĐỔI CHẤT VÀ CHUYỂN HOÁ NĂNG LƯỢNG Ở SINH VẬT",
+      "lessons": [
+        { "title": "Bài 22. Vai trò của trao đổi chất và chuyển hoá năng lượng ở sinh vật", "page": 105 },
+        { "title": "Bài 23. Quang hợp ở thực vật", "page": 108 },
+        { "title": "Bài 24. Thực hành chứng minh quang hợp ở cây xanh", "page": 114 },
+        { "title": "Bài 25. Hô hấp tế bào", "page": 116 },
+        { "title": "Bài 26. Thực hành về hô hấp tế bào ở thực vật thông qua sự nảy mầm của hạt", "page": 121 },
+        { "title": "Bài 27. Trao đổi khí ở sinh vật", "page": 123 },
+        { "title": "Bài 28. Vai trò của nước và các chất dinh dưỡng đối với cơ thể sinh vật", "page": 128 },
+        { "title": "Bài 29. Trao đổi nước và các chất dinh dưỡng ở thực vật", "page": 131 },
+        { "title": "Bài 30. Trao đổi nước và các chất dinh dưỡng ở động vật", "page": 137 },
+        { "title": "Bài 31. Thực hành chứng minh thân vận chuyển nước và lá thoát hơi nước", "page": 143 }
+      ]
+    },
+    {
+      "title": "CHỦ ĐỀ 8 – CẢM ỨNG Ở SINH VẬT VÀ TẬP TÍNH Ở ĐỘNG VẬT",
+      "lessons": [
+        { "title": "Bài 32. Cảm ứng ở sinh vật", "page": 145 },
+        { "title": "Bài 33. Tập tính ở động vật", "page": 150 }
+      ]
+    },
+    {
+      "title": "CHỦ ĐỀ 9 – SINH TRƯỞNG VÀ PHÁT TRIỂN Ở SINH VẬT",
+      "lessons": [
+        { "title": "Bài 34. Sinh trưởng và phát triển ở sinh vật", "page": 155 },
+        { "title": "Bài 35. Các nhân tố ảnh hưởng đến sinh trưởng và phát triển của sinh vật", "page": 159 },
+        { "title": "Bài 36. Thực hành chứng minh sinh trưởng và phát triển ở thực vật, động vật", "page": 164 }
+      ]
+    },
+    {
+      "title": "CHỦ ĐỀ 10 – SINH SẢN Ở SINH VẬT",
+      "lessons": [
+        { "title": "Bài 37. Sinh sản ở sinh vật", "page": 166 },
+        { "title": "Bài 38. Các yếu tố ảnh hưởng đến sinh sản và điều hoà, điều khiển sinh sản ở sinh vật", "page": 175 }
+      ]
+    },
+    {
+      "title": "CHỦ ĐỀ 11 – CƠ THỂ SINH VẬT LÀ MỘT THỂ THỐNG NHẤT",
+      "lessons": [
+        { "title": "Bài 39. Chứng minh cơ thể sinh vật là một thể thống nhất", "page": 179 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Màu icon khi parent được chọn (active) -->
+    <item android:state_selected="true" android:color="@color/text_white"/>
+
+    <!-- Màu icon khi parent được nhấn -->
+    <item android:state_pressed="true" android:color="@color/primary_color"/>
+
+    <!-- Màu icon bình thường (inactive) -->
+    <item android:color="@color/primary_color"/>
+</selector>
+
