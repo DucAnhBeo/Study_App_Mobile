@@ -1,0 +1,112 @@
+{
+  "pdf_url": "https://raw.githubusercontent.com/danghaido/Dang/main/CTST/CTST9.pdf",
+  "chapters": [
+    {
+      "title": "Chủ đề 1. Năng lượng cơ học",
+      "lessons": [
+        { "title": "Bài 2. Cơ năng", "page": 10 },
+        { "title": "Bài 3. Công và công suất", "page": 14 }
+      ]
+    },
+    {
+      "title": "Chủ đề 2. Ánh sáng",
+      "lessons": [
+        { "title": "Bài 4. Khúc xạ ánh sáng", "page": 18 },
+        { "title": "Bài 5. Tán sắc ánh sáng qua lăng kính. Màu sắc của vật", "page": 22 },
+        { "title": "Bài 6. Phản xạ toàn phần", "page": 26 },
+        { "title": "Bài 7. Thấu kính. Kính lúp", "page": 28 }
+      ]
+    },
+    {
+      "title": "Chủ đề 3. Điện",
+      "lessons": [
+        { "title": "Bài 8. Điện trở. Định luật Ohm", "page": 39 },
+        { "title": "Bài 9. Đoạn mạch nối tiếp", "page": 44 },
+        { "title": "Bài 10. Đoạn mạch song song", "page": 47 },
+        { "title": "Bài 11. Năng lượng điện. Công suất điện", "page": 50 }
+      ]
+    },
+    {
+      "title": "Chủ đề 4. Điện từ",
+      "lessons": [
+        { "title": "Bài 12. Cảm ứng điện từ", "page": 55 },
+        { "title": "Bài 13. Dòng điện xoay chiều", "page": 58 }
+      ]
+    },
+    {
+      "title": "Chủ đề 5. Năng lượng với cuộc sống",
+      "lessons": [
+        { "title": "Bài 14. Năng lượng của Trái Đất. Năng lượng hoá thạch", "page": 62 },
+        { "title": "Bài 15. Năng lượng tái tạo", "page": 66 }
+      ]
+    },
+    {
+      "title": "Chủ đề 6. Kim loại. Sự khác nhau cơ bản giữa phi kim và kim loại",
+      "lessons": [
+        { "title": "Bài 16. Tính chất chung của kim loại", "page": 71 },
+        { "title": "Bài 17. Dãy hoạt động hoá học của kim loại. Một số phương pháp tách kim loại", "page": 77 },
+        { "title": "Bài 18. Giới thiệu về hợp kim", "page": 81 },
+        { "title": "Bài 19. Sự khác nhau cơ bản giữa phi kim và kim loại", "page": 85 }
+      ]
+    },
+    {
+      "title": "Chủ đề 7. Hợp chất hữu cơ. Hydrocarbon và nguồn nhiên liệu",
+      "lessons": [
+        { "title": "Bài 20. Giới thiệu về hợp chất hữu cơ", "page": 90 },
+        { "title": "Bài 21. Alkane", "page": 94 },
+        { "title": "Bài 22. Alkene", "page": 97 },
+        { "title": "Bài 23. Nguồn nhiên liệu", "page": 101 }
+      ]
+    },
+    {
+      "title": "Chủ đề 8. Ethylic alcohol. Acetic acid",
+      "lessons": [
+        { "title": "Bài 24. Ethylic alcohol", "page": 105 },
+        { "title": "Bài 25. Acetic acid", "page": 109 }
+      ]
+    },
+    {
+      "title": "Chủ đề 9. Lipid – Carbohydrate – Protein – Polymer",
+      "lessons": [
+        { "title": "Bài 26. Lipid và chất béo", "page": 114 },
+        { "title": "Bài 27. Glucose và saccharose", "page": 117 },
+        { "title": "Bài 28. Tinh bột và cellulose", "page": 121 },
+        { "title": "Bài 29. Protein", "page": 125 },
+        { "title": "Bài 30. Polymer", "page": 128 }
+      ]
+    },
+    {
+      "title": "Chủ đề 10. Khai thác tài nguyên từ vỏ Trái Đất",
+      "lessons": [
+        { "title": "Bài 31. Sơ lược về hoá học vỏ Trái Đất và khai thác tài nguyên từ vỏ Trái Đất", "page": 135 },
+        { "title": "Bài 32. Khai thác đá vôi. Công nghiệp silicate", "page": 138 },
+        { "title": "Bài 33. Khai thác nhiên liệu hoá thạch", "page": 141 },
+        { "title": "Bài 34. Nguồn carbon. Chu trình carbon và sự ấm lên toàn cầu", "page": 149 }
+      ]
+    },
+    {
+      "title": "Chủ đề 11. Di truyền",
+      "lessons": [
+        { "title": "Bài 35. Khái quát về di truyền học", "page": 150 },
+        { "title": "Bài 36. Các quy luật di truyền của Mendel", "page": 152 },
+        { "title": "Bài 37. Nucleic acid và ứng dụng", "page": 157 },
+        { "title": "Bài 38. Đột biến gen", "page": 161 },
+        { "title": "Bài 39. Quá trình tái bản, phiên mã và dịch mã", "page": 163 },
+        { "title": "Bài 40. Từ gene đến tính trạng", "page": 168 },
+        { "title": "Bài 41. Cấu trúc nhiễm sắc thể và đột biến nhiễm sắc thể", "page": 170 },
+        { "title": "Bài 42. Thực hành: Quan sát tiêu bản nhiễm sắc thể", "page": 175 },
+        { "title": "Bài 43. Di truyền nhiễm sắc thể", "page": 177 },
+        { "title": "Bài 44. Di truyền học với con người", "page": 185 },
+        { "title": "Bài 45. Ứng dụng công nghệ di truyền vào đời sống", "page": 190 }
+      ]
+    },
+    {
+      "title": "Chủ đề 12. Tiến hoá",
+      "lessons": [
+        { "title": "Bài 46. Khái niệm về tiến hoá và các hình thức chọn lọc", "page": 198 },
+        { "title": "Bài 47. Cơ chế tiến hoá", "page": 203 },
+        { "title": "Bài 48. Phát sinh và phát triển của sự sống trên Trái Đất", "page": 208 }
+      ]
+    }
+  ]
+}

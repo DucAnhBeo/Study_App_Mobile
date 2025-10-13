@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="#FFFFFF">
+
+    <!-- Header -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Chỉnh sửa thông tin"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#333"
+        android:gravity="center"
+        android:layout_marginBottom="32dp" />
+
+    <!-- Username Field -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tên đăng nhập"
+        android:textSize="16sp"
+        android:textColor="#333"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#F0F0F0"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:hint="Nhập tên đăng nhập"
+        android:inputType="text"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Password Field -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mật khẩu mới"
+        android:textSize="16sp"
+        android:textColor="#333"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#F0F0F0"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:hint="Nhập mật khẩu mới"
+        android:inputType="textPassword"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Full Name Field -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Họ và tên"
+        android:textSize="16sp"
+        android:textColor="#333"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:id="@+id/editTextFullName"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#F0F0F0"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:hint="Nhập họ và tên"
+        android:inputType="textPersonName"
+        android:layout_marginBottom="32dp" />
+
+    <!-- Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/buttonCancel"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="Hủy"
+            android:textColor="#FFFFFF"
+            android:background="#666666"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/buttonSave"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="Lưu thay đổi"
+            android:textColor="#FFFFFF"
+            android:background="#007BFF"
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

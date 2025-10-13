@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">study_App</string>
+    <!-- Web Client ID from Firebase Console - studyapp-da824 -->
+    <string name="default_web_client_id">531094183499-pndtrdb9legj910hkpd18ibq2mcic9cs.apps.googleusercontent.com</string>
+
+    <string name="avatar">Avatar</string>
+    <string name="username">Tên người dùng</string>
+    <string name="role">Chức vụ</string>
+    <string name="settings">Cài đặt</string>
+    <string name="home">Trang chủ</string>
+    <string name="classroom">Phòng học</string>
+    <string name="discussion">Thảo luận</string>
+    <string name="quiz">Quiz</string>
+    <string name="chatbot">Chatbot</string>
+    <string name="system_title">Hệ thống học tập</string>
+    <string name="grade_6">Lớp 6</string>
+    <string name="grade_7">Lớp 7</string>
+    <string name="grade_8">Lớp 8</string>
+    <string name="grade_9">Lớp 9</string>
+    <string name="choose_textbook">Chọn sách học:</string>
+    <string name="canh_dieu">Cánh diều</string>
+    <string name="chan_troi_sang_tao">Chân trời sáng tạo</string>
+    <string name="ket_noi_tri_thuc">Kết nối tri thức</string>
+    <string name="selected_book">Sách đã chọn:</string>
+    <string name="enter_classroom">Vào phòng học</string>
+    <string name="admin_username">admin</string>
+    <string name="admin_role">Quản trị viên</string>
+    <string name="discussion_title">Thảo luận</string>
+    <string name="discussion_subtitle">Đặt câu hỏi và thảo luận với cộng đồng</string>
+    <string name="search_hint">Tìm kiếm câu hỏi…</string>
+    <string name="clear_search_description">Xóa tìm kiểm</string>
+    <string name="no_results">Không tìm thấy câu hỏi nào</string>
+    <string name="add_question_description">Thêm câu hỏi</string>
+    <string name="add_answer">Thêm câu trả lời</string>
+    <string name="asked_by">Hỏi bởi: %1$s</string>
+    <string name="answer_count">%1$d trả lời</string>
+    <string name="no_results_with_keyword">"Không tìm thấy câu hỏi nào với từ khóa \"%1$s\""</string>
+    <string name="question_posted">Câu hỏi đã được đăng!</string>
+    <string name="enter_question_prompt">Vui lòng nhập câu hỏi!</string>
+    <string name="answer_added">Câu trả lời đã được thêm!</string>
+    <string name="enter_answer_prompt">Vui lòng nhập câu trả lời!</string>
+    <string name="create_new_question">Tạo câu hỏi mới</string>
+    <string name="post_question">Đăng câu hỏi</string>
+    <string name="cancel">Hủy</string>
+    <string name="add_answer_title">Thêm câu trả lời</string>
+    <string name="send_answer">Gửi trả lời</string>
+    <string name="classroom_title">Lớp học</string>
+    <string name="choose_grade">Chọn lớp</string>
+    <string name="classroom_info">%1$s - %2$s</string>
+</resources>
