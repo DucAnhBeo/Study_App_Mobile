@@ -201,14 +201,62 @@ public class DiscussionFragment extends Fragment implements DiscussionAdapter.On
     // Implement interface methods
     @Override
     public void onCreateAnswer(int discussionId, String content) {
-        // Implementation sẽ được thêm sau
-        Toast.makeText(getContext(), "Chức năng đang được phát triển", Toast.LENGTH_SHORT).show();
+        if (currentUserId == -1) {
+            Toast.makeText(getContext(), "Phiên đăng nhập đã hết hạn", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        DiscussionDataManager.createAnswer(discussionId, currentUserId, content, new DiscussionDataManager.ActionCallback() {
+            @Override
+            public void onSuccess(String message) {
+                if (getActivity() != null) {
+                    getActivity().runOnUiThread(() -> {
+                        Toast.makeText(getContext(), "Đã thêm câu trả lời thành công!", Toast.LENGTH_SHORT).show();
+                        // Reload discussions để hiển thị câu trả lời mới
+                        loadDiscussions();
+                    });
+                }
+            }
+
+            @Override
+            public void onError(String error) {
+                if (getActivity() != null) {
+                    getActivity().runOnUiThread(() -> {
+                        Toast.makeText(getContext(), "Lỗi thêm câu trả lời: " + error, Toast.LENGTH_SHORT).show();
+                    });
+                }
+            }
+        });
     }
 
     @Override
     public void onDeleteQuestion(int questionId) {
-        // Implementation sẽ được thêm sau
-        Toast.makeText(getContext(), "Chức năng đang được phát triển", Toast.LENGTH_SHORT).show();
+        if (currentUserId == -1) {
+            Toast.makeText(getContext(), "Phiên đăng nhập đã hết hạn", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        DiscussionDataManager.deleteQuestion(questionId, currentUserId, new DiscussionDataManager.ActionCallback() {
+            @Override
+            public void onSuccess(String message) {
+                if (getActivity() != null) {
+                    getActivity().runOnUiThread(() -> {
+                        Toast.makeText(getContext(), "Đã xóa câu hỏi thành công!", Toast.LENGTH_SHORT).show();
+                        // Reload discussions để cập nhật danh sách
+                        loadDiscussions();
+                    });
+                }
+            }
+
+            @Override
+            public void onError(String error) {
+                if (getActivity() != null) {
+                    getActivity().runOnUiThread(() -> {
+                        Toast.makeText(getContext(), "Lỗi xóa câu hỏi: " + error, Toast.LENGTH_SHORT).show();
+                    });
+                }
+            }
+        });
     }
 
     @Override

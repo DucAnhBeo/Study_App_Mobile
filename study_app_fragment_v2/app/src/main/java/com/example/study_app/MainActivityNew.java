@@ -269,16 +269,4 @@ public class MainActivityNew extends AppCompatActivity {
                 })
                 .show();
     }
-
-    public int getCurrentUserId() {
-        return userId;
-    }
-
-    public String getCurrentUsername() {
-        return username;
-    }
-
-    public String getCurrentFullName() {
-        return fullName;
-    }
 }

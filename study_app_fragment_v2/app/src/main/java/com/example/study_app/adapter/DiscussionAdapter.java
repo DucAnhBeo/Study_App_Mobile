@@ -55,7 +55,7 @@ public class DiscussionAdapter extends RecyclerView.Adapter<DiscussionAdapter.Di
     public void onBindViewHolder(@NonNull DiscussionViewHolder holder, int position) {
         Discussion discussion = discussions.get(position);
 
-        holder.questionTextView.setText(discussion.getContent()); // Sử dụng getContent() thay vì getQuestion()
+        holder.questionTextView.setText(discussion.getContent());
         holder.authorTextView.setText("Hỏi bởi: " + discussion.getAuthor());
         holder.dateTextView.setText(formatDate(discussion.getCreatedAt()));
 
@@ -63,16 +63,29 @@ public class DiscussionAdapter extends RecyclerView.Adapter<DiscussionAdapter.Di
         int answerCount = discussion.getAnswers() != null ? discussion.getAnswers().size() : 0;
         holder.answerCountTextView.setText(answerCount + " trả lời");
 
-        // Clear previous answers
+        // Clear previous answers và setup lại
         holder.answersLayout.removeAllViews();
 
-        // Add answers
-        if (discussion.getAnswers() != null) {
-            for (Answer answer : discussion.getAnswers()) {
+        // Hiển thị câu trả lời (chỉ hiển thị tối đa 3 câu đầu tiên)
+        if (discussion.getAnswers() != null && !discussion.getAnswers().isEmpty()) {
+            int maxAnswersToShow = Math.min(3, discussion.getAnswers().size());
+            for (int i = 0; i < maxAnswersToShow; i++) {
+                Answer answer = discussion.getAnswers().get(i);
                 View answerView = createAnswerView(answer);
                 if (answerView != null) {
                     holder.answersLayout.addView(answerView);
                 }
+            }
+
+            // Nếu có nhiều hơn 3 câu trả lời, hiển thị nút "Xem thêm"
+            if (discussion.getAnswers().size() > 3) {
+                TextView viewMoreText = new TextView(context);
+                viewMoreText.setText("👁️ Xem thêm " + (discussion.getAnswers().size() - 3) + " câu trả lời");
+                viewMoreText.setTextColor(context.getResources().getColor(R.color.primary_color, null));
+                viewMoreText.setTextSize(13);
+                viewMoreText.setPadding(16, 8, 16, 8);
+                viewMoreText.setOnClickListener(v -> showAllAnswersDialog(discussion));
+                holder.answersLayout.addView(viewMoreText);
             }
         }
 
@@ -186,6 +199,34 @@ public class DiscussionAdapter extends RecyclerView.Adapter<DiscussionAdapter.Di
             builder.show();
         } catch (Exception e) {
             Toast.makeText(context, "Lỗi khi mở dialog xóa", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void showAllAnswersDialog(Discussion discussion) {
+        try {
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setTitle("Tất cả câu trả lời");
+
+            // Tạo layout cho dialog
+            LinearLayout layout = new LinearLayout(context);
+            layout.setOrientation(LinearLayout.VERTICAL);
+
+            // Thêm tất cả các câu trả lời vào layout
+            if (discussion.getAnswers() != null) {
+                for (Answer answer : discussion.getAnswers()) {
+                    View answerView = createAnswerView(answer);
+                    if (answerView != null) {
+                        layout.addView(answerView);
+                    }
+                }
+            }
+
+            builder.setView(layout);
+
+            builder.setPositiveButton("Đóng", null);
+            builder.show();
+        } catch (Exception e) {
+            Toast.makeText(context, "Lỗi khi mở dialog xem tất cả câu trả lời", Toast.LENGTH_SHORT).show();
         }
     }
 
