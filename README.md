@@ -55,23 +55,17 @@ PORT=3000
 
 
 ## 5. Sử dụng (Usage)
-- Dùng lệnh cd backend và chạy server Node.js
-- Mở ứng dụng Android trên thiết bị hoặc giả lập
-- Đăng ký/Đăng nhập tài khoản
-- Khám phá các tính năng: đọc sách, thảo luận, làm quiz, sử dụng chatbot
 ### 5.1. Hướng dẫn cho Người dùng 
 #### Đăng nhập và Đăng ký:
 - Mở ứng dụng Study App
 - Chọn "Đăng ký" để tạo tài khoản mới hoặc "Đăng nhập" nếu đã có tài khoản
 - Có thể đăng nhập bằng Google hoặc tài khoản thường
-- Điền đầy đủ thông tin cá nhân (họ tên, lớp, trường)
 
 #### Đọc sách giáo khoa:
 - Vào tab "Sách giáo khoa"
 - Chọn khối lớp (6, 7, 8, 9)
 - Chọn bộ sách (Cánh Diều, Chân Trời Sáng Tạo, Kết Nối Tri Thức)
 - Chọn môn học và cuốn sách muốn đọc
-- Sử dụng các tính năng: zoom, bookmark, tìm kiếm trong PDF
 
 #### Hệ thống thảo luận:
 - Vào tab "Thảo luận"
