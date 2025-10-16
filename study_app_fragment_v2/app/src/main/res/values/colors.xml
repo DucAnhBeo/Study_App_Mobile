@@ -16,6 +16,7 @@
     <color name="answer_background">#F8F9FA</color>
     <color name="discussion_card">#FFFFFF</color>
     <color name="background_white">#FFFFFF</color>
+    <color name="white">#FFFFFF</color>
 
     <!-- Surface Colors -->
     <color name="surface_color">#FFFFFF</color>

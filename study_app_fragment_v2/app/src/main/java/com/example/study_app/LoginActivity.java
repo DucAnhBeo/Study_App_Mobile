@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         setupClickListeners();
     }
 
-    // =================== INITIALIZATION ===================
+
 
     private void initViews() {
         editTextUsername = findViewById(R.id.editTextUsername);
@@ -89,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
         buttonGoogleLogin.setOnClickListener(v -> signInWithGoogle());
     }
 
-    // =================== REGULAR LOGIN ===================
+
 
     private void performLogin() {
         String username = editTextUsername.getText().toString().trim();
@@ -131,7 +131,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    // =================== GOOGLE SIGN-IN ===================
+
 
     private void signInWithGoogle() {
         Log.d(TAG, "Starting Google Sign-In...");
@@ -207,7 +207,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    // =================== UTILITY METHODS ===================
+
 
     private String getGoogleErrorMessage(int statusCode) {
         switch (statusCode) {

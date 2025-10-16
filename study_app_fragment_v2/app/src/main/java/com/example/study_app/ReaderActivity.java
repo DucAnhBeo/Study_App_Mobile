@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
@@ -57,6 +58,16 @@ public class ReaderActivity extends AppCompatActivity {
         }
     }
 
+    private void openPdf(File file) {
+        pdfView.fromFile(file)
+                .enableSwipe(true)
+                .swipeHorizontal(false)
+                .enableDoubletap(true)
+                .defaultPage(0)
+                .spacing(4)
+                .load();
+    }
+
     @SuppressLint("UnspecifiedRegisterReceiverFlag")
     private void enqueueDownload(String url, File out) {
         try {
@@ -71,7 +82,6 @@ public class ReaderActivity extends AppCompatActivity {
                     .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
                     .setDestinationInExternalFilesDir(this, Environment.DIRECTORY_DOCUMENTS, out.getName());
 
-            dm.enqueue(req);
             onDownloadComplete = new BroadcastReceiver() {
                 @Override
                 public void onReceive(Context context, Intent intent) {
@@ -85,28 +95,21 @@ public class ReaderActivity extends AppCompatActivity {
             };
 
             IntentFilter filter = new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
-            registerReceiver(onDownloadComplete, filter);
-
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
+                registerReceiver(onDownloadComplete, filter, Context.RECEIVER_NOT_EXPORTED);
+            } else {
+                registerReceiver(onDownloadComplete, filter);
+            }
+            dm.enqueue(req);
         } catch (Exception e) {
             Toast.makeText(this, "Không thể bắt đầu tải: " + e.getMessage(), Toast.LENGTH_LONG).show();
             finish();
         }
     }
 
-    private void openPdf(File file) {
-        pdfView.fromFile(file)
-                .enableSwipe(true)
-                .swipeHorizontal(false)
-                .enableDoubletap(true)
-                .defaultPage(0)
-                .spacing(4)
-                .load();
-    }
-
     private void loadTocFromJson(String assetPath) {
-        try (InputStream is = getAssets().open(assetPath);
-             BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
-
+        try (InputStream is = getAssets().open(assetPath)) {
+            BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
             StringBuilder sb = new StringBuilder();
             String line; while ((line = br.readLine()) != null) sb.append(line);
 

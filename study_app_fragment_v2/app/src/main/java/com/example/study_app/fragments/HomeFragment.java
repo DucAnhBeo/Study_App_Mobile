@@ -13,9 +13,11 @@ import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.study_app.R;
 import com.example.study_app.ReaderActivity;
+import com.google.android.material.button.MaterialButton;
 
 import org.json.JSONObject;
 
@@ -35,6 +37,7 @@ public class HomeFragment extends Fragment {
     private Button currentGradeButton = null;
     private Button currentTextbookButton = null;
     private ImageView imageViewBook;
+    private MaterialButton buttonGoToClassroom;
     private String selectedTitle = null;
     private String selectedJsonAssetPath = null;
     private String selectedPdfUrl = null;
@@ -47,8 +50,10 @@ public class HomeFragment extends Fragment {
         selectedBookLayout = view.findViewById(R.id.selectedBookLayout);
         textViewSelectedInfo = view.findViewById(R.id.textViewSelectedInfo);
         imageViewBook = view.findViewById(R.id.imageViewBook);
+        buttonGoToClassroom = view.findViewById(R.id.buttonGoToClassroom);
 
         imageViewBook.setOnClickListener(v -> openReaderIfReady());
+        buttonGoToClassroom.setOnClickListener(v -> goToClassroom());
 
         // Grade selection buttons
         Button buttonGrade6 = view.findViewById(R.id.buttonGrade6);
@@ -218,7 +223,6 @@ public class HomeFragment extends Fragment {
         Button buttonGrade8 = getView().findViewById(R.id.buttonGrade8);
         Button buttonGrade9 = getView().findViewById(R.id.buttonGrade9);
 
-        // Chỉ cần set selected = false, color selector sẽ tự động xử lý màu
         buttonGrade6.setSelected(false);
         buttonGrade7.setSelected(false);
         buttonGrade8.setSelected(false);
@@ -232,9 +236,42 @@ public class HomeFragment extends Fragment {
         Button buttonChanTroi = getView().findViewById(R.id.buttonChanTroi);
         Button buttonKetNoi = getView().findViewById(R.id.buttonKetNoi);
 
-        // Chỉ cần set selected = false, color selector sẽ tự động xử lý màu
         buttonCanhDieu.setSelected(false);
         buttonChanTroi.setSelected(false);
         buttonKetNoi.setSelected(false);
+    }
+
+    private void goToClassroom() {
+        if (!selectedGrade.isEmpty() && !selectedTextbook.isEmpty()) {
+            // Tạo ClassroomFragment và truyền dữ liệu
+            ClassroomFragment classroomFragment = new ClassroomFragment();
+
+            Bundle bundle = new Bundle();
+            bundle.putString("grade", selectedGrade);
+            bundle.putString("textbook", selectedTextbook);
+            bundle.putString("title", selectedTitle);
+            bundle.putString("pdfUrl", selectedPdfUrl);
+            bundle.putString("jsonAssetPath", selectedJsonAssetPath);
+            classroomFragment.setArguments(bundle);
+
+            // Chuyển sang ClassroomFragment
+            FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragmentContainer, classroomFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+
+            // Cập nhật navigation bar nếu cần (có thể gọi từ MainActivity)
+            if (getActivity() != null) {
+                // Cập nhật active state của bottom navigation
+                updateBottomNavigation();
+            }
+        }
+    }
+
+    private void updateBottomNavigation() {
+        // Tìm và active button Classroom trong MainActivity
+        if (getActivity() != null && getActivity().findViewById(R.id.buttonClassroom) != null) {
+            getActivity().findViewById(R.id.buttonClassroom).performClick();
+        }
     }
 }

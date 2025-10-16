@@ -66,7 +66,7 @@ public class DiscussionFragment extends Fragment implements DiscussionAdapter.On
         discussions = new ArrayList<>();
         filteredDiscussions = new ArrayList<>();
         adapter = new DiscussionAdapter(getContext(), filteredDiscussions);
-        adapter.setActionListener(this); // Set this fragment as the action listener
+        adapter.setActionListener(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
@@ -212,7 +212,6 @@ public class DiscussionFragment extends Fragment implements DiscussionAdapter.On
                 if (getActivity() != null) {
                     getActivity().runOnUiThread(() -> {
                         Toast.makeText(getContext(), "Đã thêm câu trả lời thành công!", Toast.LENGTH_SHORT).show();
-                        // Reload discussions để hiển thị câu trả lời mới
                         loadDiscussions();
                     });
                 }
